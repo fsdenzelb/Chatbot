@@ -1,7 +1,10 @@
 package apresentacao;
+import dominio.Empresa;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class TelaCadastro extends JFrame {
     private JTextField campoNome;
@@ -59,10 +62,26 @@ public class TelaCadastro extends JFrame {
         botaoCadastrar = new JButton("Cadastrar");
         JPanel botoes = new JPanel(new FlowLayout(FlowLayout.CENTER, 8, 8));
         botoes.add(botaoCadastrar);
+        ActionListener acaoBotaoCadastrar = this.acaoBotaoCadastrarActionListener();
+        botaoCadastrar.addActionListener(acaoBotaoCadastrar);
 
         getRootPane().setDefaultButton(botaoCadastrar);
         //Adiciona o ENTER como um atalho para o botãoCadastrar.
 
         add(botoes, BorderLayout.SOUTH);
+    }
+
+    private ActionListener acaoBotaoCadastrarActionListener() {
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Empresa empresa = new Empresa();
+                empresa.setNome(campoNome.getText());
+                empresa.setCnpj(campoCnpj.getText());
+                empresa.setEmail(campoEmail.getText());
+                empresa.setEndereco(campoEndereco.getText());
+                empresa.setTelefone(campoTelefone.getText());
+            }
+        };
     }
 }

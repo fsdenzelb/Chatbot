@@ -7,6 +7,10 @@ public class Empresa {
     private String endereco;
     private String telefone;
 
+    public Empresa() {
+
+    }
+
     public Empresa(String nome, String cnpj, String email, String endereco, String telefone) {
         this.nome = nome;
         this.cnpj = cnpj;
@@ -54,4 +58,6 @@ public class Empresa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+
 }
