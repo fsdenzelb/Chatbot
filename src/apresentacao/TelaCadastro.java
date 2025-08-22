@@ -1,5 +1,6 @@
 package apresentacao;
 import dominio.Empresa;
+import dominio.EmpresaCadastro;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,6 +10,7 @@ import java.awt.event.ActionListener;
 public class TelaCadastro extends JFrame {
     private JTextField campoNome;
     private JTextField campoCnpj;
+    private JTextField campoSenha;
     private JTextField campoEmail;
     private JTextField campoEndereco;
     private JTextField campoTelefone;
@@ -45,12 +47,14 @@ public class TelaCadastro extends JFrame {
 
         campoNome = new JTextField(20);
         campoCnpj = new JTextField(20);
+        campoSenha = new JTextField(20);
         campoEmail = new JTextField(20);
         campoEndereco = new JTextField(20);
         campoTelefone = new JTextField(20);
 
         form.add(new JLabel("Nome:")); form.add(campoNome);
         form.add(new JLabel("CNPJ:")); form.add(campoCnpj);
+        form.add(new JLabel("Senha:")); form.add(campoSenha);
         form.add(new JLabel("Email:")); form.add(campoEmail);
         form.add(new JLabel("Endereco:")); form.add(campoEndereco);
         form.add(new JLabel("Telefone:")); form.add(campoTelefone);
@@ -78,9 +82,13 @@ public class TelaCadastro extends JFrame {
                 Empresa empresa = new Empresa();
                 empresa.setNome(campoNome.getText());
                 empresa.setCnpj(campoCnpj.getText());
+                empresa.setSenha(campoSenha.getText());
                 empresa.setEmail(campoEmail.getText());
                 empresa.setEndereco(campoEndereco.getText());
                 empresa.setTelefone(campoTelefone.getText());
+
+                EmpresaCadastro cadastro = new EmpresaCadastro();
+                cadastro.cadastrarEmpresa(empresa);
             }
         };
     }

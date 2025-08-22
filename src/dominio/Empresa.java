@@ -3,6 +3,7 @@ package dominio;
 public class Empresa {
     private String nome;
     private String cnpj;
+    private String senha;
     private String email;
     private String endereco;
     private String telefone;
@@ -11,9 +12,10 @@ public class Empresa {
 
     }
 
-    public Empresa(String nome, String cnpj, String email, String endereco, String telefone) {
+    public Empresa(String nome, String cnpj, String senha, String email, String endereco, String telefone) {
         this.nome = nome;
         this.cnpj = cnpj;
+        this.senha = senha;
         this.email = email;
         this.endereco = endereco;
         this.telefone = telefone;
@@ -33,6 +35,14 @@ public class Empresa {
 
     public void setCnpj(String cnpj) {
         this.cnpj = cnpj;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public String getEmail() {
