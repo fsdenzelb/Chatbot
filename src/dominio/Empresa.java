@@ -8,9 +8,7 @@ public class Empresa {
     private String endereco;
     private String telefone;
 
-    public Empresa() {
-
-    }
+    public Empresa() {}
 
     public Empresa(String nome, String cnpj, String senha, String email, String endereco, String telefone) {
         this.nome = nome;
@@ -68,6 +66,4 @@ public class Empresa {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
-
-
 }

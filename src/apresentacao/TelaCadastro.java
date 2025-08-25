@@ -79,6 +79,7 @@ public class TelaCadastro extends JFrame {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                //Quando o botão é clicado, é disparado um evento que cria um novo objeto da classe Empresa, os parâmetros dentro da classe são setados de acordo com o que tem no campo de texto da GUI.
                 Empresa empresa = new Empresa();
                 empresa.setNome(campoNome.getText());
                 empresa.setCnpj(campoCnpj.getText());
@@ -87,8 +88,20 @@ public class TelaCadastro extends JFrame {
                 empresa.setEndereco(campoEndereco.getText());
                 empresa.setTelefone(campoTelefone.getText());
 
+                //Após setar os nomes no objeto criado, também criamos um novo objeto da classe EmpresaCadastro, a fim de utilizar seu metodo 'cadastarEmpresa'.
                 EmpresaCadastro cadastro = new EmpresaCadastro();
                 cadastro.cadastrarEmpresa(empresa);
+
+                //Limpar os campos após o INSERT:
+                campoNome.setText("");
+                campoCnpj.setText("");
+                campoSenha.setText("");
+                campoEmail.setText("");
+                campoEndereco.setText("");
+                campoTelefone.setText("");
+
+                //Mensagem de confirmação:
+                JOptionPane.showMessageDialog(null, "Empresa Cadastrada com sucesso!");
             }
         };
     }
