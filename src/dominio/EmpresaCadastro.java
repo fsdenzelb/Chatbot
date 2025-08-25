@@ -40,4 +40,37 @@ public class EmpresaCadastro {
             e.printStackTrace();
         };
     }
+
+    public static int buscarEmpresaTelefone(String telefone) {
+            String selectTelefone = "SELECT empresa_id FROM telefones_empresa WHERE telefone = ?";
+            try (Connection conexao = ConexaoDB.getConnection();
+            PreparedStatement stmt = conexao.prepareStatement(selectTelefone)) {
+                stmt.setString(1, telefone);
+
+                ResultSet rs = stmt.executeQuery();
+                if(rs.next()) {
+                    return rs.getInt("empresa_id");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return -1;
+    }
+
+    public static boolean validarSenha(int EmpresaID, String senha) {
+            String selectSenha = "SELECT senha FROM empresa WHERE id = ?";
+            try (Connection conexao = ConexaoDB.getConnection();
+            PreparedStatement stmt = conexao.prepareStatement(selectSenha)) {
+                stmt.setInt(1, EmpresaID);
+
+                ResultSet rs = stmt.executeQuery();
+                if(rs.next()) {
+                    String senhaBD = rs.getString("senha");
+                    return senhaBD.equals(senha);
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            return false;
+    }
 }
